@@ -1,8 +1,17 @@
 # Validaform
-Short description and motivation.
+Rails API form validator
 
 ## Usage
-How to use my plugin.
+
+Mount to an endpoint of your application, give it forms fields, and it'll return the validations errors/success in JSON.
+Really usefull when you want to add on-unblur or before-submit validations.
+
+example with curl =>
+
+```
+curl -X POST -H 'Content-Type: application/json' -d '{"fields":[{"name":"users/first_name","value":"Asterix"},  {"name":"users/last_name","value":"LeGaulois"}, {"name":"companies/size", "value":"17"}]}' http://localhost:3000/validaform/forms/validate
+```
+
 
 ## Installation
 Add this line to your application's Gemfile:
@@ -21,8 +30,21 @@ Or install it yourself as:
 $ gem install validaform
 ```
 
+Then at last, add
+```mount Validaform::Engine, at: '/validaform'```
+inside your
+`Rails.application.routes.draw` block of your `route.rb`
+
 ## Contributing
-Contribution directions go here.
+### TODO
+  -> Add tests
+
+  -> Check security
+
+  -> More explanations in README
+  
+### Pull-requests
+  Please fork and make a pull-request, I'll be reactive.
 
 ## License
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
