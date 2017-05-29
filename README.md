@@ -22,7 +22,7 @@ and the API will send you the validation errors like
 {
   fields:[
     {
-      name: 'users/first_name',
+      name: 'users/username',
       errors: ['too_long', 'too_great_album'],
       count: 2
     },
