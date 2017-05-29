@@ -6,6 +6,36 @@ Rails API form validator
 Mount to an endpoint of your application, give it forms fields, and it'll return the validations errors/success in JSON.
 Really usefull when you want to add on-unblur or before-submit validations.
 
+You post on `/validaform/forms/validate` a json with this format :
+
+```
+{
+  fields: [
+    { name: 'users/username', value: 'Asterixlegaulois' },
+    { name: 'company/name', value: 'Panoracorp' }
+  ]
+}.to_json
+```
+
+and the API will send you the validation errors like
+```
+{
+  fields:[
+    {
+      name: 'users/first_name',
+      errors: ['too_long', 'too_great_album'],
+      count: 2
+    },
+    {
+      name: 'company/name',
+      errors: ['taken'],
+      count: 1
+    }
+  ],
+  count: 3
+}
+```
+
 example with curl =>
 
 ```
